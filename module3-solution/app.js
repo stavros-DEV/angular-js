@@ -44,6 +44,9 @@ function NarrowItDownController(MenuSearchService) {
 
   narrowItDown.removeItem = function (index) {
     narrowItDown.found.splice(index, 1);
+    if (narrowItDown.found.length == 0) {
+      narrowItDown.found = null;
+    }
   }
 }
 
