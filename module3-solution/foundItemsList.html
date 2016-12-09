@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-12">
+
+      <div class="row" ng-repeat="item in foundItemsArray" ng-if="item.description">
+        <div class="col-md-2">
+          {{ item.name }}
+        </div>
+        <div class="col-md-1">
+          {{ item.short_name }}
+        </div>
+        <div class="col-md-7">
+          {{ item.description }}
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-danger" ng-click="onRemove({index: $index});">Remove Item</button>
+        </div>
+      </div>
+
+      <div class="alert alert-danger" ng-if="foundItemsArray.length == 0">
+        Nothing Found!
+      </div>
+
+  </div>
+</div>
