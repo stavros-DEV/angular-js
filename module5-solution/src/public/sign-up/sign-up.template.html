@@ -1,0 +1,71 @@
+<fieldset>
+  <legend>Sign Up</legend>
+  <form name='signUpForm' novalidate>
+
+    <input type="text" name="firstname" placeholder="First Name"
+      ng-model="signUpCtrl.user.firstname"
+      required
+      minlength="2"
+      ng-maxlength="20">
+      <span
+        ng-if="(signUpForm.firstname.$error.minlength || signUpForm.firstname.$error.required) && signUpForm.firstname.$touched">
+        Firstname must be at least 2 characters long
+      </span>
+      <span ng-if="signUpForm.firstname.$error.maxlength && signUpForm.firstname.$touched">
+        Firstname must not be longer than 20 characters
+      </span>
+      <br>
+
+      <input type="text" name="lastname" placeholder="Last Name"
+        ng-model="signUpCtrl.user.lastname"
+        required
+        minlength="2"
+        ng-maxlength="20">
+        <span
+          ng-if="(signUpForm.lastname.$error.minlength || signUpForm.lastname.$error.required) && signUpForm.lastname.$touched">
+          Lastname must be at least 2 characters long
+        </span>
+        <span ng-if="signUpForm.lastname.$error.maxlength && signUpForm.lastname.$touched">
+          Lastname must not be longer than 20 characters
+        </span>
+        <br>
+
+    <input type="email" name="email" placeholder="Email"
+      ng-model="signUpCtrl.user.email"
+      required>
+      <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+        Must be a valid email address: handle@domain format
+      </span>
+      <br>
+
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+      ng-model="signUpCtrl.user.phone"
+      pattern="(\d{3})-(\d{3})-(\d{4})">
+      <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+        Phone must be in the format ###-###-####.
+      </span>
+      <br>
+
+      <input type="text" name="dishNumber" placeholder="Favorite Dish Number"
+        ng-model="signUpCtrl.user.dishNumber"
+        required>
+        <span
+          ng-if="signUpForm.dishNumber.$error.required && signUpForm.dishNumber.$touched">
+          This is a required field! Don't be shy!
+        </span>
+        <span
+          ng-if="signUpCtrl.noSuchMenu">
+          No such menu number exists!
+        </span>
+        <br>
+
+    <button
+      ng-disabled="signUpForm.$invalid"
+      ng-click="signUpCtrl.submit()">Submit</button>
+
+    <div ng-if="signUpCtrl.message" style="margin-top: 10px;">
+      {{ signUpCtrl.message }}
+    </div>
+
+  </form>
+</fieldset>
