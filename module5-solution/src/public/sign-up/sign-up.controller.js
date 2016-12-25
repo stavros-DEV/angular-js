@@ -12,7 +12,7 @@ function SignUpController(MenuService, UserService) {
   $ctrl.submit = function () {
 
     var response = MenuService.getMenuItems($ctrl.user.dishNumber).then(function (response) {
-      if (response.menu_items.length == 0) {
+      if (response.status == 500) {
         $ctrl.noSuchMenu = true;
       } else {
         $ctrl.noSuchMenu = false;

@@ -20,9 +20,14 @@ function MenuService($http, ApiPath) {
   service.getMenuItems = function (category) {
     var config = {};
 
-    return $http.get(ApiPath + '/menu_items/' + category + '.json').then(function (response) {
-      return response.data;
-    });
+    return $http.get(ApiPath + '/menu_items/' + category + '.json').then(
+      function (response) {
+        return response;
+      },
+      function (response) {
+        return response;
+      }
+    );
   };
 
 }
